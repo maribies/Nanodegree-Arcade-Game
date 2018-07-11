@@ -1,7 +1,6 @@
 class Entity {
   constructor (){
     this.sprite = "images/";
-    //start position
     this.x = 2;
     this.y = 5;
   }
@@ -14,6 +13,18 @@ class Entity {
     this.isOutOfBoundsX = this.x > 5;
     this.isOutOfBoundsY = this.y < 1;
   }
+
+
+  checkCollisions(playerOrEnemy){
+    if (this.y === playerOrEnemy.y) {
+      if (this.x >= playerOrEnemy.x - 0.5 && this.x <= playerOrEnemy.x + 0.5) {
+        return true;
+      }
+    }
+    else {
+      return false;
+    }
+  }
 }
 
 class Player extends Entity {
@@ -22,7 +33,6 @@ class Player extends Entity {
     this.sprite += "char-pink-girl.png";
   }
   handleInput(input){
-    //positions based on grid so character can't go off screen
     switch (input){
       case 'left' : this.x = this.x > 0 ? this.x -1 : this.x;
         break;
