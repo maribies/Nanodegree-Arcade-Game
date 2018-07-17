@@ -47,11 +47,11 @@ class Player extends Entity {
     if (this.isOutOfBoundsY && !this.moving && !this.win) {
       this.score += 1;
       player.reset();
-      console.log(this.score);
     }
     if (this.isOutOfBoundsY && !this.moving && !this.win && this.score == 3) {
       this.win = true;
-      alert("win");
+      alert("You win!");
+      this.score = 0;
     }
   }
 

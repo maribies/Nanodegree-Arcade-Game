@@ -87,7 +87,6 @@ var Engine = (function(global) {
         if(enemy.checkCollisions(player) || player.checkCollisions(enemy)) {
           player.reset();
           player.score -=1;
-          console.log("hit")
         }
       })
     }
