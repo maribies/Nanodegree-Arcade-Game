@@ -1,8 +1,12 @@
+//entity class to handle the shared
+//fuctions of the game characters
+//draw entities on the screen
 class Entity {
   constructor (){
     this.sprite = "images/";
     this.x = 2;
     this.y = 5;
+    this.score = 0;
   }
 
   render(){
@@ -11,7 +15,7 @@ class Entity {
 
   update(dt){
     this.isOutOfBoundsX = this.x > 5;
-    this.isOutOfBoundsY = this.y < 1;
+    this.isOutOfBoundsY = this.y <= 0;
   }
 
 
@@ -27,11 +31,30 @@ class Entity {
   }
 }
 
+// own player class
+// This class requires an update(), render() and
+// a handleInput() method.
 class Player extends Entity {
   constructor() {
     super();
     this.sprite += "char-pink-girl.png";
+    this.moving = false;
+    this.win = false;
   }
+
+  update(dt){
+    super.update();
+    if (this.isOutOfBoundsY && !this.moving && !this.win) {
+      this.score += 1;
+      player.reset();
+      console.log(this.score);
+    }
+    if (this.isOutOfBoundsY && !this.moving && !this.win && this.score == 3) {
+      this.win = true;
+      alert("win");
+    }
+  }
+
   handleInput(input){
     switch (input){
       case 'left' : this.x = this.x > 0 ? this.x -1 : this.x;
@@ -46,8 +69,25 @@ class Player extends Entity {
         break;
     }
   }
+
+  render() {
+    super.render();
+    this.moving = false;
+  }
+
+  reset() {
+    this.y = 5;
+    this.x = 2;
+    this.win = false;
+  }
+
 }
 
+// Update the enemy's position, required method for game
+// Parameter: dt, a time delta between ticks
+// multiply any movement by the dt parameter
+// which will ensure the game runs at the same speed for
+// all computers.
 class Enemy extends Entity {
   constructor(x, y) {
     super();
@@ -55,12 +95,13 @@ class Enemy extends Entity {
     this.x = x;
     this.y = y;
   }
+
   update(dt){
     super.update();
     if(this.isOutOfBoundsX){
       this.x = -1;
     } else {
-      this.x += dt += Math.random()*.1;
+      this.x += dt*Math.random()*5;
     }
   }
 }
