@@ -37,5 +37,9 @@ function winOver() {
         overlay.insertAdjacentElement('beforeend', winMessageDiv);
         winMessageDiv.insertAdjacentElement('beforeend', winMessage);
         winMessageDiv.insertAdjacentElement('beforeend', winBtn);
+        winBtn.setAttribute("id", "winBtn");
 
+        document.getElementById('winBtn').addEventListener('click', function(e) {
+          console.log('clicked');
+        });
 }
