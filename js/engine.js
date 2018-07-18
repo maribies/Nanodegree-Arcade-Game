@@ -22,7 +22,8 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        stopGo;
 
     canvas.width = 505;
     canvas.height = 606;
@@ -55,7 +56,21 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        if (player.win === true){
+          //win.cancelAnimationFrame(stopGo);
+          document.getElementById('winBtn').addEventListener('click',
+          function(e) {
+            console.log('clicked');
+            let element = document.getElementById("overlay");
+            element.classList.remove('vis');
+            //player.reset();
+            //win.requestAnimationFrame(main);
+            //update(dt);
+            //render();
+          });
+        } else {
+          stopGo = win.requestAnimationFrame(main);
+        }
     }
 
     /* This function does some initial setup that should only occur once,
@@ -186,6 +201,8 @@ var Engine = (function(global) {
     function reset() {
         player.reset();
     }
+
+    //winOver();
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when

@@ -42,3 +42,12 @@ button {
   border-radius: 10px;
   box-shadow: 4px 4px 12px 0px rgba(46, 61, 73, 0.5);
 }
+
+/* for hide,show modal */
+.toggle-content {
+  display: none;
+}
+
+.toggle-content.vis {
+  display: block;
+}

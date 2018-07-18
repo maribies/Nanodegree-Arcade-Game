@@ -34,3 +34,4 @@ JavaScript. Might not be compatible with all browsers and assistive technologies
 https://www.w3schools.com/tags/ref_canvas.asp
 https://css-tricks.com/snippets/javascript/javascript-keycodes/
 https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000
+https://css-tricks.com/centering-css-complete-guide/

@@ -22,6 +22,7 @@ document.addEventListener('keyup', function(e) {
 
 //function to pop up overlay with winning message
 function winOver() {
+  if (player.win === true){
         let message = document.createTextNode('You win!');
         let messageBtn = document.createTextNode('Play again?')
         let doc = document,
@@ -29,7 +30,9 @@ function winOver() {
             winMessageDiv = doc.createElement('div'),
             winMessage = doc.createElement('h1'),
             winBtn = doc.createElement('button');
-        overlay.className = "overlay";
+        overlay.id = "overlay"
+        overlay.classList.add('vis');
+        overlay.classList.add('toggle-content');
         winMessage.appendChild(message);
         winMessageDiv.className = "winning-message";
         winBtn.appendChild(messageBtn);
@@ -38,8 +41,20 @@ function winOver() {
         winMessageDiv.insertAdjacentElement('beforeend', winMessage);
         winMessageDiv.insertAdjacentElement('beforeend', winBtn);
         winBtn.setAttribute("id", "winBtn");
-
-        document.getElementById('winBtn').addEventListener('click', function(e) {
-          console.log('clicked');
-        });
+  } else {
+    overlay.classList.remove('vis');
+    overlay.classList.toggle('vis');
+  }
 }
+
+let show = function (overlay) {
+  overlay.classList.add('vis');
+};
+
+let hide = function (overlay) {
+  overlay.classList.remove('vis');
+};
+
+let toggle = function (overlay) {
+  overlay.classList.toggle('vis');
+};
