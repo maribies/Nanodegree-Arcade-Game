@@ -1,6 +1,6 @@
 //entity class to handle the shared
 //fuctions of the game characters
-//draw entities on the screen
+//& draw entities on the screen
 class Entity {
   constructor (){
     this.sprite = "images/";
@@ -10,12 +10,14 @@ class Entity {
   }
 
   render(){
+    //hard coded image dimension offsets
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
   }
 
+  //to know when enemy is out of bounds and player 'wins'
   update(dt){
     this.isOutOfBoundsX = this.x > 5;
-    this.isOutOfBoundsY = this.y <= 0;
+    this.isOutOfBoundsY = this.y < -.5;
   }
 
 
@@ -31,7 +33,7 @@ class Entity {
   }
 }
 
-// own player class
+// own player class, to handle player specific functionality
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player extends Entity {
@@ -50,16 +52,16 @@ class Player extends Entity {
     }
     if (this.isOutOfBoundsY && !this.moving && !this.win && this.score == 3) {
       this.win = true;
-      alert("You win!");
-      this.score = 0;
+      winOver();
     }
+
   }
 
   handleInput(input){
     switch (input){
       case 'left' : this.x = this.x > 0 ? this.x -1 : this.x;
         break;
-      case 'up' : this.y = this.y > 0 ? this.y -1 : this.y;
+      case 'up' : this.y = this.y > -.5 ? this.y -1 : this.y;
         break;
       case 'down' : this.y = this.y < 5 ? this.y +1 : this.y;
         break;
@@ -100,8 +102,14 @@ class Enemy extends Entity {
     super.update();
     if(this.isOutOfBoundsX){
       this.x = -1;
-    } else {
+    } if (player.score <= 0) {
       this.x += dt*Math.random()*5;
+    } if (player.score == 1) {
+      this.x += dt*Math.random()*6;
+    } if (player.score == 2) {
+      this.x += dt*Math.random()*8;
+    } if (player.win == true) {
+      this.x = 0;
     }
   }
 }

@@ -8,7 +8,7 @@
 * [How to Run](#how-to-run)
 * [Contributing](#contributing)
 * [Code Dependancies](#code-dependancies)
-* [Resources](#resources)
+* [Resources Used](#resources-used)
 
 ## Overview
 
@@ -28,9 +28,9 @@ To run:
 This repository is for me to develop my skills as a Udacity student. Therefore, I will most likely not accept pull requests. (At least not until after my submission has been reviewed for completion towards my nanodegree program.)
 
 ## Code dependancies
-JavaScript. Might not be compatiable with all browsers and assistive technologies. yet.
+JavaScript. Might not be compatible with all browsers and assistive technologies. yet.
 
-## Resources
+## Resources Used
 https://www.w3schools.com/tags/ref_canvas.asp
 https://css-tricks.com/snippets/javascript/javascript-keycodes/
 https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000

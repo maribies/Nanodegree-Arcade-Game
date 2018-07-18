@@ -16,7 +16,26 @@ let allowedKeys = {
 };
 
 document.addEventListener('keyup', function(e) {
-   allowedKeys;
-
+  allowedKeys;
   player.handleInput(allowedKeys[e.keyCode]);
 });
+
+//function to pop up overlay with winning message
+function winOver() {
+        let message = document.createTextNode('You win!');
+        let messageBtn = document.createTextNode('Play again?')
+        let doc = document,
+            overlay = doc.createElement('div'),
+            winMessageDiv = doc.createElement('div'),
+            winMessage = doc.createElement('h1'),
+            winBtn = doc.createElement('button');
+        overlay.className = "overlay";
+        winMessage.appendChild(message);
+        winMessageDiv.className = "winning-message";
+        winBtn.appendChild(messageBtn);
+        doc.body.appendChild(overlay);
+        overlay.insertAdjacentElement('beforeend', winMessageDiv);
+        winMessageDiv.insertAdjacentElement('beforeend', winMessage);
+        winMessageDiv.insertAdjacentElement('beforeend', winBtn);
+
+}
